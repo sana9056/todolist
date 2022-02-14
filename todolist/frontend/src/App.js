@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 import UserList from './components/User.js'
 import axios from 'axios'
+import Footer from './components/Footer.js'
+import Navbar from './components/Menu.js'
+
+const DOMAIN = 'http://127.0.0.1:8000/api/'
+const get_url = (url) => `${DOMAIN}${url}`
 
 
 class App extends React.Component {
