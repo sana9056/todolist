@@ -1,46 +1,40 @@
-import React from 'react'
+import React from 'react';
 
 
 class LoginForm extends React.Component {
     constructor(props) {
-      super(props)
-      this.state = {login: '', password: ''}
+        super(props);
+        this.state = {
+            username: "",
+            password: ""
+        }
     }
 
-    handleChange(event)
-    {
-        this.setState(
-                {
-                    [event.target.name]: event.target.value
-                }
-            );
+    handlerOnChange(event) {
+        console.log(event.target);
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
-    handleSubmit(event) {
-      this.props.login(this.state.login, this.state.password)
-      event.preventDefault()
+
+    handlerOnSubmit(event) {
+        console.log('submit', this.state);
+        this.props.getToken(this.state.username,
+            this.state.password);
+        event.preventDefault();
     }
 
     render() {
-      return (
-        <form onSubmit={(event)=> this.handleSubmit(event)}>
-            <div className="form-group">
-            <label for="login">login</label>
-                <input type="text" className="form-control" name="login" value={this.state.login} onChange={(event)=>this.handleChange(event)} />
-            </div>
-
-        <div className="form-group">
-            <label for="password">password</label>
-
-            <input type="password" className="form-control" name="password" value={this.state.password} onChange={(event)=>this.handleChange(event)} />
-
-
-          </div>
-          <input type="submit" className="btn btn-primary" value="Login" />
-        </form>
-
-
-      );
+        return (
+            <form onSubmit={(event) => this.handlerOnSubmit(event)}>
+                <input type="text" name="username"
+                       onChange={(event) => this.handlerOnChange(event)}/>
+                <input type="password" name="password"
+                       onChange={(event) => this.handlerOnChange(event)}/>
+                <input type="submit" value="login"/>
+            </form>
+        )
     }
-  }
+}
 
-  export default LoginForm
+export default LoginForm;

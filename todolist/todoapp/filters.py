@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from .models import ToDo
+from .models import todolist
 
 
 class TodoFilter(filters.FilterSet):
@@ -8,5 +8,5 @@ class TodoFilter(filters.FilterSet):
     create = filters.DateFromToRangeFilter()
 
     class Meta:
-        model = ToDo
-        fields = ['project', 'create']
+        model = todolist
+        fields = ['todoapp', 'create']
