@@ -1,11 +1,11 @@
-import React from 'react';
-
-export default function Footer() {
-  return (
-    <footer className="footer mt-auto py-3">
-      <div className="container">
-        <span className="text-muted">GeekBrains 2022 groups 1294_1187_1186</span>
-      </div>
-    </footer>
-  );
+import React from "react";
+const FooterItem = ({footer}) => {
+    return (
+        <footer>
+           <p>___________________________</p>
+            <h4>'This is sana9056 footer'</h4>
+        </footer>
+    )
 }
+
+export default FooterItem;
