@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
 from .models import todoapp, todolist
-from .serializers import todoappModelSerializer, todolistModelSerializer
+from .serializers import todoappModelSerializer, todolistModelSerializer, todoappModelSerializerGET
 from .paginations import todoappPageNumberPagination, todolistPageNumberPagination
 
 
@@ -18,6 +18,11 @@ class todoappModelViewSet(ModelViewSet):
         if name:
             self.queryset = self.queryset.filter(name__contains=name)
         return self.queryset
+
+    def get_serializer_class(self):
+        if self.request.method in ['GET']:
+            return todoappModelSerializerGET
+        return todoappModelSerializer
 
 
 class todolistModelViewSet(ModelViewSet):
@@ -35,6 +40,8 @@ class todolistModelViewSet(ModelViewSet):
             self.queryset = self.queryset.filter(created__gt=date_qt, created__lt=date_lt)
 
         return self.queryset
+
+
 
     def destroy(self, request, pk=None):
         instance = self.get_object()
