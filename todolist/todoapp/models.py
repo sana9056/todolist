@@ -8,12 +8,14 @@ class todoapp(models.Model):
     name = models.CharField(max_length=100, unique=True)
     repository = models.URLField(blank=True)
 
+    class Meta:
+        ordering = ['pk']
+
     def __str__(self):
         return f'{self.name}'
 
 
 class todolist(models.Model):
-    """Заметка"""
     project = models.ForeignKey(todoapp, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
