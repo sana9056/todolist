@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'todoapp',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'drf_yasg',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -82,6 +84,12 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+
+
+GRAPHENE = {
+    'SCHEME': 'todolist.scheme.scheme'
+}
+
 
 DATABASES = {
     'default': {
