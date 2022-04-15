@@ -38,3 +38,4 @@ class Query(graphene.ObjectType):
 
 
 scheme = graphene.Scheme(query=Query)
+#Для 10 урока
