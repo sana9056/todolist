@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react'
+import {Link} from 'react-router-dom'
+
 
 const TodoItem = ({todolist}) => {
     return (
@@ -7,6 +9,8 @@ const TodoItem = ({todolist}) => {
             <td>{todolist.description}</td>
             <td>{todolist.active}</td>
             <td>{todolist.project}</td>
+            <td><button onClick={()=>deleteTODO(item.id)} type='button'>Delete</button></td>
+
         </tr>
     )
 }
@@ -25,8 +29,11 @@ const TodoList = ({todolist}) => {
             <tbody>
             {todolist.map((todolist) => <TodoItem key={todolist.id} todolist={todolist}/>)}
             </tbody>
+            {items.map((todolist) => <TodoItem todolist={todolist} deleteTODO={deleteTODO}/>)}
+            <Link to='/books/create'>Create</Link>
         </table>
     )
 }
 
-export default TodoList;
+
+export default TodoList
